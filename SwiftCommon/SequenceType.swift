@@ -10,6 +10,16 @@ import Foundation
 
 public extension SequenceType {
   
+  /**
+   Returns the first element in self for which predicate is true, or nil if no element returns
+   true.
+   
+   Example:
+   ```
+   let array = [1, 2, 3, 4, 5, 6, 7]
+   array.find() { $0 % 2 == 0 }  // => 2
+   ```
+	*/
   public func find(predicate: (Self.Generator.Element) -> Bool) -> Self.Generator.Element? {
     for e in self {
       if predicate(e) { return e }

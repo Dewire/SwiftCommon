@@ -8,21 +8,31 @@
 
 import Foundation
 
+// MARK: match, gmatch, sub, gsub
+
 public extension String {
   
-  // MARK: Searching
-  
   /**
-  Matches self against a regular expression. The return value is a @see MatchData instance
-  encapsulating the match (and any regular expression group matches), or nil if no
-  match was found.
-    
+  Matches self against a regular expression. The return value is a @link String.MatchData
+  instance for the first match in the string or nil if no match was found.
+  
+  The second parameter are the regex options to use.
+  The string option format supports the following options (can be combined, eg "imx"):
+  ```
+  "i"  .CaseInsensitive
+  "m"  .DotMatchesLineSeparators
+  "a"  .AnchorsMatchLines
+  "x"  .AllowCommentsAndWhitespace
+  ```
+  
   Example:
+  ```
   let res = "hello world 123".match("(\\w+) (\\d+)")
   res[0]  // => "world 123"
   res[1]  // => "world"
   res[2]  // => "123"
-  **/
+  ```
+  */
   public func match(
     regex: String,
     _ options: String? = nil) -> MatchData? {
@@ -40,6 +50,19 @@ public extension String {
       return MatchData(string: self, match: match)
   }
   
+  /**
+  Matches self against a regular expression. The return value is an array of
+  @link String.MatchData @/link instances, one for each match.
+   
+  See match for possible regex options.
+  
+  Example:
+  ```
+  let res = "hello world hello HELLO".gmatch("hello", "i")!
+  res.count  // => 3
+  res[2][0]  // => HELLO
+  ```
+  */
   public func gmatch(
     regex: String,
     _ options: String? = nil) -> [MatchData]? {
@@ -58,9 +81,14 @@ public extension String {
    The MatchData struct acts like an Array<String> where the first element is the text
    of the entire match. The MatchData struct may also contain additional elements where
    each additional element corresponds to a regular expression group match.
-   **/
+   */
   public struct MatchData {
     private let data: [String]
+    
+    /// 1 + the number of groups in the match.
+    public var count: Int {
+      return data.count
+    }
     
     private init(string: String, match: NSTextCheckingResult) {
       
@@ -83,17 +111,23 @@ public extension String {
       return data
     }
     
-    func count() -> Int {
-      return data.count
-    }
-    
+    /// Returns an array of the group captures in the match.
     func captures() -> [String] {
       return Array(data.dropFirst(1))
     }
   }
   
-  // MARK: Replacing
-  
+  /**
+   Substitues the first match of regex in the string
+   
+   See match for possible regex options.
+   
+   Example:
+   ```
+   "SPeling is hard speling".sub("speling", replacement: "Spelling", "i")) 
+   // => Spelling is hard speling
+   ```
+	*/
   public func sub(regex: String, replacement: String, _ options: String? = nil) -> String {
     return _sub(regex,
       replacement: replacement,
@@ -101,6 +135,17 @@ public extension String {
       options: options)
   }
   
+  /**
+   Substitues all matches of regex in the string
+   
+   See match for possible regex options.
+   
+   Example:
+   ```
+   let l = "1337 1337 1337!!!"
+   l.gsub("3+", replacement: "4")  // => 147 147 147!!!
+   ```
+   */
   public func gsub(regex: String, replacement: String, _ options: String? = nil) -> String {
     return _sub(regex,
       replacement: replacement,
@@ -126,8 +171,6 @@ public extension String {
       return String(mut)
   }
   
-  // MARK: Common utilities
-  
   private func parseStringOptions(options: String?) throws -> NSRegularExpressionOptions {
     let noOptions = NSRegularExpressionOptions.init(rawValue: 0)
     guard let options = options where !options.isEmpty else { return noOptions }
@@ -138,6 +181,7 @@ public extension String {
       case "i": enums.append(.CaseInsensitive)
       case "m": enums.append(.DotMatchesLineSeparators)
       case "a": enums.append(.AnchorsMatchLines)
+      case "x": enums.append(.AllowCommentsAndWhitespace)
       default: throw NSError(domain: "unknown regex option - \(char)", code: 0, userInfo: nil)
       }
     }
@@ -147,30 +191,3 @@ public extension String {
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
