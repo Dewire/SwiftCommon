@@ -20,7 +20,7 @@ public extension SequenceType {
    array.find() { $0 % 2 == 0 }  // => 2
    ```
 	*/
-  public func find(predicate: (Self.Generator.Element) -> Bool) -> Self.Generator.Element? {
+  public func find(@noescape predicate: (Self.Generator.Element) -> Bool) -> Self.Generator.Element? {
     for e in self {
       if predicate(e) { return e }
     }

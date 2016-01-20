@@ -20,7 +20,7 @@ public extension Int {
    i  // => 3
    ```
 	*/
-  public func times(closure: () -> ()) {
+  public func times(@noescape closure: () -> ()) {
     for _ in 0..<self {
       closure()
     }
