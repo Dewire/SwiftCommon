@@ -8,26 +8,22 @@
 
 import Foundation
 
-extension String {
+public extension String {
   
   // MARK: Searching
   
   /**
-  Matches self against a regular expression. The return value is a MatchData instance
+  Matches self against a regular expression. The return value is a @see MatchData instance
   encapsulating the match (and any regular expression group matches), or nil if no
   match was found.
-  
-  The MatchData struct acts like an Array<String> where the first element is the text
-  of the entire match. The MatchData struct may also contain additional elements where
-  each additional element corresponds to a regular expression group match.
-  
+    
   Example:
-  let res = "hello world 123".rmatch("(\\w+) (\\d+)")
+  let res = "hello world 123".match("(\\w+) (\\d+)")
   res[0]  // => "world 123"
   res[1]  // => "world"
   res[2]  // => "123"
   **/
-  func match(
+  public func match(
     regex: String,
     _ options: String? = nil) -> MatchData? {
       
@@ -44,7 +40,7 @@ extension String {
       return MatchData(string: self, match: match)
   }
   
-  func gmatch(
+  public func gmatch(
     regex: String,
     _ options: String? = nil) -> [MatchData]? {
       
@@ -58,10 +54,15 @@ extension String {
       return matches.isEmpty ? nil : matches.map() { MatchData(string: self, match: $0) }
   }
   
-  struct MatchData {
+  /**
+   The MatchData struct acts like an Array<String> where the first element is the text
+   of the entire match. The MatchData struct may also contain additional elements where
+   each additional element corresponds to a regular expression group match.
+   **/
+  public struct MatchData {
     private let data: [String]
     
-    init(string: String, match: NSTextCheckingResult) {
+    private init(string: String, match: NSTextCheckingResult) {
       
       let ranges = (0..<match.numberOfRanges).map() { match.rangeAtIndex($0) }
       
@@ -93,14 +94,14 @@ extension String {
   
   // MARK: Replacing
   
-  func sub(regex: String, replacement: String, _ options: String? = nil) -> String {
+  public func sub(regex: String, replacement: String, _ options: String? = nil) -> String {
     return _sub(regex,
       replacement: replacement,
       matchingOptions: NSMatchingOptions.Anchored,
       options: options)
   }
   
-  func gsub(regex: String, replacement: String, _ options: String? = nil) -> String {
+  public func gsub(regex: String, replacement: String, _ options: String? = nil) -> String {
     return _sub(regex,
       replacement: replacement,
       matchingOptions: NSMatchingOptions.init(rawValue: 0),
