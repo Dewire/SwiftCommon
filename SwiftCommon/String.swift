@@ -13,7 +13,7 @@ import Foundation
 public extension String {
   
   /**
-  Matches self against a regular expression. The return value is a @link String.MatchData
+  Matches self against a regular expression. The return value is a String.MatchData
   instance for the first match in the string or nil if no match was found.
   
   The second parameter are the regex options to use.
@@ -99,20 +99,20 @@ public extension String {
       }
     }
     
-    subscript(index: Int) -> String {
+    public subscript(index: Int) -> String {
       return data[index]
     }
     
-    subscript(range: Range<Int>) -> [String] {
+    public subscript(range: Range<Int>) -> [String] {
       return Array(data[range])
     }
     
-    func toArray() -> [String] {
+    public func toArray() -> [String] {
       return data
     }
     
     /// Returns an array of the group captures in the match.
-    func captures() -> [String] {
+    public func captures() -> [String] {
       return Array(data.dropFirst(1))
     }
   }
