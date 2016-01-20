@@ -70,6 +70,3 @@ class StringTests: XCTestCase {
     XCTAssertEqual("147 147 147!!!", r)
   }
 }
-
-
-

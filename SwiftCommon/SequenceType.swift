@@ -1,5 +1,5 @@
 //
-//  Sequence.swift
+//  SequenceType.swift
 //  SwiftCommon
 //
 //  Created by Kalle Lindström on 20/01/16.
