@@ -17,7 +17,7 @@ public extension SequenceType {
    Example:
    ```
    let array = [1, 2, 3, 4, 5, 6, 7]
-   array.find() { $0 % 2 == 0 }  // => 2
+   array.find { $0 % 2 == 0 }  // => 2
    ```
 	*/
   public func find(@noescape predicate: (Self.Generator.Element) -> Bool) -> Self.Generator.Element? {

@@ -21,6 +21,8 @@ public extension Int {
    ```
 	*/
   public func times(@noescape closure: () -> ()) {
+    guard self > 0 else { fatalError("self must be greater than zero, was \(self)") }
+    
     for _ in 0..<self {
       closure()
     }
