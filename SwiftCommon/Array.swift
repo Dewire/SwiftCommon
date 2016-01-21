@@ -8,12 +8,14 @@
 
 import Foundation
 
+// MARK: sample, shuffle
 
 public extension Array {
   
   /**
    Returns a random element from self or nil if self is empty.
 	*/
+  @warn_unused_result
   public func sample() -> Element? {
     guard !isEmpty else { return nil }
     
@@ -25,6 +27,7 @@ public extension Array {
    Returns amount random elements from self. If amount < 1 an empty array is returned,
    and if amount >= count count random elements is returned (the array is shuffled).
    */
+  @warn_unused_result
   public func sample(amount: Int) -> [Element] {
     guard amount > 0     else { return [] }
     guard amount < count else { return shuffle() }
@@ -48,6 +51,7 @@ public extension Array {
   }
   
   /// Returns a shuffled copy of self. If self is empty returns self.
+  @warn_unused_result
   public func shuffle() -> [Element] {
     guard count > 1 else { return self }
     

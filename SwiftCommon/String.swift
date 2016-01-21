@@ -191,3 +191,13 @@ public extension String {
     }
   }
 }
+
+// MARK: reverse
+
+public extension String {
+  
+  /// Returns a copy of self that is reversed.
+  public func reverse() -> String {
+    return String(characters.reverse())
+  }
+}

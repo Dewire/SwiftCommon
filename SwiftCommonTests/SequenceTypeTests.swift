@@ -24,4 +24,16 @@ class SequenceTypeTests: XCTestCase {
     
     XCTAssertEqual(2, array.find { $0 % 2 == 0 })
   }
+  
+  func test_any() {
+    let array = [1, 2, 3, 4, 5, 6, 7]
+    XCTAssertTrue(array.any { $0 > 5 })
+    XCTAssertFalse(array.any { $0 > 7 })
+  }
+  
+  func test_all() {
+    let array = ["hello", "world"]
+    XCTAssertTrue(array.all { $0.characters.count == 5 })
+    XCTAssertFalse(array.all { $0.characters.first == "h" })
+  }
 }

@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: merge
+
 public extension Dictionary {
   /**
    Updates self with the values from other.

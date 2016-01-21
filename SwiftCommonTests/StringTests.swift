@@ -69,4 +69,11 @@ class StringTests: XCTestCase {
     let r = l.gsub("3+", replacement: "4")
     XCTAssertEqual("147 147 147!!!", r)
   }
+  
+  // MARK: reverse
+  
+  func test_reverse() {
+    XCTAssertEqual("", "".reverse())
+    XCTAssertEqual("DRACULA", "ALUCARD".reverse())
+  }
 }
