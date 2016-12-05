@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: find, any, all
 
-public extension SequenceType {
+public extension Sequence {
   
   /**
    Returns the first element in self for which predicate is true, or nil if no element returns
@@ -22,8 +22,7 @@ public extension SequenceType {
    array.find { $0 % 2 == 0 }  // => 2
    ```
 	*/
-  @warn_unused_result
-  public func find(@noescape predicate: (Self.Generator.Element) -> Bool) -> Self.Generator.Element? {
+  public func find(_ predicate: (Self.Iterator.Element) -> Bool) -> Self.Iterator.Element? {
     for e in self {
       if predicate(e) { return e }
     }
@@ -41,8 +40,7 @@ public extension SequenceType {
    array.any { $0 > 7 }  // => false
    ```
 	*/
-  @warn_unused_result
-  public func any(@noescape predicate: (Self.Generator.Element) -> Bool) -> Bool {
+  public func any(_ predicate: (Self.Iterator.Element) -> Bool) -> Bool {
     for element in self {
       if predicate(element) { return true }
     }
@@ -59,8 +57,7 @@ public extension SequenceType {
    array.all { $0.characters.count == 5 }  // => true
    ```
 	*/
-  @warn_unused_result
-  public func all(@noescape predicate: (Self.Generator.Element) -> Bool) -> Bool {
+  public func all(_ predicate: (Self.Iterator.Element) -> Bool) -> Bool {
     for element in self {
       if !predicate(element) { return false }
     }

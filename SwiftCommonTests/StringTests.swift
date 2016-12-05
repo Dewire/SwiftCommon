@@ -73,7 +73,7 @@ class StringTests: XCTestCase {
   // MARK: reverse
   
   func test_reverse() {
-    XCTAssertEqual("", "".reverse())
-    XCTAssertEqual("DRACULA", "ALUCARD".reverse())
+    XCTAssertEqual("", "".reversed())
+    XCTAssertEqual("DRACULA", "ALUCARD".reversed())
   }
 }

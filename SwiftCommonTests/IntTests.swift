@@ -21,7 +21,7 @@ class IntTests: XCTestCase {
   
   func test_times() {
     var i = 0
-    3.times { i++ }
+    3.times { i += 1 }
     XCTAssertEqual(3, i)
   }
 }

@@ -24,4 +24,9 @@ class DictionaryTests: XCTestCase {
     d.merge(["a": "newa", "c": "3"])
     XCTAssertEqual(["a": "newa", "b": "2", "c": "3"], d)
   }
+  
+  func test_merged() {
+    let a = ["a": "1", "b": "2"].merged(["a": "3"])["a"]
+    XCTAssertEqual("3", a)
+  }
 }

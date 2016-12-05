@@ -46,17 +46,17 @@ class ArrayTests: XCTestCase {
     }
   }
   
-  func test_shuffle() {
+  func test_shuffled() {
     // Test empty
     let empty = [Int]()
-    XCTAssertTrue(empty.shuffle().isEmpty)
+    XCTAssertTrue(empty.shuffled().isEmpty)
     
     // Test 1 element
     let one = [1]
-    XCTAssertEqual(1, one.shuffle()[0])
+    XCTAssertEqual(1, one.shuffled()[0])
     
     let a = ["an", "array", "of", "strings", "!"]
-    let s = a.shuffle()
+    let s = a.shuffled()
     XCTAssertEqual(5, s.count)
     
     for x in s {

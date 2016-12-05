@@ -15,7 +15,6 @@ public extension Array {
   /**
    Returns a random element from self or nil if self is empty.
 	*/
-  @warn_unused_result
   public func sample() -> Element? {
     guard !isEmpty else { return nil }
     
@@ -27,32 +26,28 @@ public extension Array {
    Returns amount random elements from self. If amount < 1 an empty array is returned,
    and if amount >= count count random elements is returned (the array is shuffled).
    */
-  @warn_unused_result
-  public func sample(amount: Int) -> [Element] {
+  public func sample(_ amount: Int) -> [Element] {
     guard amount > 0     else { return [] }
-    guard amount < count else { return shuffle() }
+    guard amount < count else { return shuffled() }
     
-    var shuffled = self
-    let lastIndex = shuffled.count - 1
-    var cursor = lastIndex
+    var copy = self
+    var cursor = copy.endIndex - 1
     
     amount.times {
       let randomIndex = Int(arc4random_uniform(UInt32(cursor + 1)))
       
-      // Swap index and randomIndex
-      let temp = shuffled[cursor]
-      shuffled[cursor] = shuffled[randomIndex]
-      shuffled[randomIndex] = temp
+      if randomIndex != cursor {
+        swap(&copy[cursor], &copy[randomIndex])
+      }
       
-      --cursor
+      cursor -= 1
     }
     
-    return Array(shuffled[(cursor + 1)...lastIndex])
+    return Array(copy[(cursor + 1)..<copy.endIndex])
   }
   
   /// Returns a shuffled copy of self. If self is empty returns self.
-  @warn_unused_result
-  public func shuffle() -> [Element] {
+  public func shuffled() -> [Element] {
     guard count > 1 else { return self }
     
     var shuffled = self
@@ -66,7 +61,7 @@ public extension Array {
       shuffled[cursor] = shuffled[randomIndex]
       shuffled[randomIndex] = temp
       
-      --cursor
+      cursor -= 1
     }
     
     return shuffled

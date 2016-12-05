@@ -21,9 +21,25 @@ public extension Dictionary {
    d  // => ["a": "newa", "b": "2", "c": "3"]
    ```
 	*/
-  public mutating func merge(other: Dictionary) {
+  public mutating func merge(_ other: Dictionary<Key, Value>) {
     for (key, value) in other {
       self.updateValue(value, forKey: key)
     }
+  }
+  
+  /**
+   Returns a new Dictionary based on self with updates values
+   from the other Dictionary.
+   
+   Example:
+   ```
+   ["a": "1", "b": "2"].merge(["a": "3"])["a"]  // => 3
+
+   ```
+   */
+  public func merged(_ other: Dictionary<Key, Value>) -> Dictionary<Key, Value> {
+    var copy = self
+    copy.merge(other)
+    return copy
   }
 }

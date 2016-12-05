@@ -22,7 +22,7 @@ public extension Int {
    i  // => 3
    ```
 	*/
-  public func times(@noescape closure: () -> ()) {
+  public func times(_ closure: () -> ()) {
     guard self > 0 else { fatalError("self must be greater than zero, was \(self)") }
     
     for _ in 0..<self {
