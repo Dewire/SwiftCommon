@@ -36,4 +36,11 @@ class SequenceTypeTests: XCTestCase {
     XCTAssertTrue(array.all { $0.characters.count == 5 })
     XCTAssertFalse(array.all { $0.characters.first == "h" })
   }
+  
+  func test_unique() {
+    let array = [1, 1, 2, 1, 3]
+    let unique = array.unique()
+    XCTAssertEqual(3, unique.count)
+    XCTAssert([1, 2, 3].elementsEqual(array.unique()))
+  }
 }

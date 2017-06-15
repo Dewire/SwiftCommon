@@ -64,3 +64,53 @@ public extension Sequence {
     return true
   }
 }
+
+// MARK: unique
+
+public extension Sequence where Iterator.Element: Hashable {
+  
+  /**
+   Returns an array where duplicated elements are removed. The original order is kept.
+   Example:
+   ```
+   let array = [1, 1, 2, 1, 3]
+   array.unique // => [1, 2, 3]
+   ```
+   */
+  public func unique() -> [Iterator.Element] {
+    var buffer: [Iterator.Element] = []
+    var lookup = Set<Iterator.Element>()
+    
+    for element in self {
+      guard !lookup.contains(element) else { continue }
+      
+      buffer.append(element)
+      lookup.insert(element)
+    }
+    
+    return buffer
+  }
+}
+
+public extension Sequence where Iterator.Element: Equatable {
+  
+  /**
+   Returns an array where duplicated elements are removed. The original order is kept.
+   Example:
+   ```
+   let array = [1, 1, 2, 1, 3]
+   array.unique // => [1, 2, 3]
+   ```
+   */
+  public func unique() -> [Iterator.Element] {
+    var buffer: [Iterator.Element] = []
+    
+    for element in self {
+      guard !buffer.contains(element) else { continue }
+      
+      buffer.append(element)
+    }
+    
+    return buffer
+  }
+}
