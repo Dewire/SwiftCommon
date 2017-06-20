@@ -8,19 +8,19 @@
 
 import UIKit
 
-extension UIWindow {
+public extension UIWindow {
   
   /**
    Returns the current visible view controller or nil starting the search from the window's root view controller.
    */
-  var visibleViewController: UIViewController? {
+  public var visibleViewController: UIViewController? {
     return UIWindow.getVisibleViewController(from: self.rootViewController)
   }
   
   /**
    Returns the current visible view controller or nil starting the search from the given view controller.
    */
-  static func getVisibleViewController(from vc: UIViewController?) -> UIViewController? {
+  public static func getVisibleViewController(from vc: UIViewController?) -> UIViewController? {
     if let nc = vc as? UINavigationController {
       return UIWindow.getVisibleViewController(from: nc.visibleViewController)
     } else if let tc = vc as? UITabBarController {
