@@ -9,7 +9,18 @@ require 'json'
 
 class Bootstrapper
 
-  BASE_DIR = File.dirname(File.expand_path(File.dirname(__FILE__)))
+  def self.find_base_dir(dir)
+    return dir if File.exist?(File.join(dir, "Cartfile"))
+
+    parent = File.dirname dir
+    unless parent == "/"
+      find_base_dir(parent)
+    else
+      raise "Could not locate Cartfile"
+    end
+  end
+
+  BASE_DIR = find_base_dir File.expand_path(File.dirname(__FILE__))
 
   def run
     carthage_exist = Dir.exist?(File.join(BASE_DIR, "Carthage"))
