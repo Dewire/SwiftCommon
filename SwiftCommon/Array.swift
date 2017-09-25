@@ -37,7 +37,7 @@ public extension Array {
       let randomIndex = Int(arc4random_uniform(UInt32(cursor + 1)))
       
       if randomIndex != cursor {
-        swap(&copy[cursor], &copy[randomIndex])
+        copy.swapAt(cursor, randomIndex)
       }
       
       cursor -= 1

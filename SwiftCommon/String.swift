@@ -78,7 +78,7 @@ public extension String {
   }
   
   private func makeMatchArray(string: String, match: NSTextCheckingResult) -> [String] {
-    let ranges = (0..<match.numberOfRanges).map() { match.rangeAt($0) }
+    let ranges = (0..<match.numberOfRanges).map() { match.range(at: $0) }
     
     return ranges.map() { range in
       (string as NSString).substring(with: range)
