@@ -23,8 +23,8 @@ extension UIColor {
    UIColor(rgb: 0xFF000080)             # -> rec color with =~ 50% opacity
    ```
    */
-  convenience init(rgb: Int, alpha: CGFloat = 1) {
-    let r, g, b: Int
+  convenience init(rgb: Int64, alpha: CGFloat = 1) {
+    let r, g, b: Int64
     let a: CGFloat
     
     if rgb > 0xFFFFFF {                           // we have a RGBA color
