@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6BE636B91F7A45520052392B /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE636B81F7A45520052392B /* UIColor.swift */; };
+		6BE636BB1F7A47C80052392B /* UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE636BA1F7A47C70052392B /* UIColorTests.swift */; };
 		6BE7042A1EF9098B0096B1A2 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BE704291EF9098B0096B1A2 /* UIView.swift */; };
 		D31D7FBD1C50C8C500FE5107 /* ArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D31D7FBC1C50C8C500FE5107 /* ArrayTests.swift */; };
 		D39135DD1C4FB355006DE408 /* SequenceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D39135DC1C4FB355006DE408 /* SequenceType.swift */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6BE636B81F7A45520052392B /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		6BE636BA1F7A47C70052392B /* UIColorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorTests.swift; sourceTree = "<group>"; };
 		6BE704291EF9098B0096B1A2 /* UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		D31D7FBC1C50C8C500FE5107 /* ArrayTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayTests.swift; sourceTree = "<group>"; };
 		D39135DC1C4FB355006DE408 /* SequenceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SequenceType.swift; sourceTree = "<group>"; };
@@ -119,6 +123,7 @@
 				D3FE6E811C4FBD59002A6031 /* Int.swift */,
 				D3E8D8D21C4FDF5C00458E57 /* Dictionary.swift */,
 				6BE704291EF9098B0096B1A2 /* UIView.swift */,
+				6BE636B81F7A45520052392B /* UIColor.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -131,6 +136,7 @@
 				D3FE6E891C4FD37C002A6031 /* IntTests.swift */,
 				D3E8D8D41C4FE06700458E57 /* DictionaryTests.swift */,
 				D31D7FBC1C50C8C500FE5107 /* ArrayTests.swift */,
+				6BE636BA1F7A47C70052392B /* UIColorTests.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -250,6 +256,7 @@
 				D3E8D8D31C4FDF5C00458E57 /* Dictionary.swift in Sources */,
 				6BE7042A1EF9098B0096B1A2 /* UIView.swift in Sources */,
 				D39135DD1C4FB355006DE408 /* SequenceType.swift in Sources */,
+				6BE636B91F7A45520052392B /* UIColor.swift in Sources */,
 				D3CC2D5F1C2EABA100F6E686 /* String.swift in Sources */,
 				D3E8D8D91C50C3D300458E57 /* Array.swift in Sources */,
 			);
@@ -264,6 +271,7 @@
 				D3E8D8D51C4FE06700458E57 /* DictionaryTests.swift in Sources */,
 				D3FE6E881C4FD0F0002A6031 /* SequenceTypeTests.swift in Sources */,
 				D3CC2D531C2EAB3000F6E686 /* StringTests.swift in Sources */,
+				6BE636BB1F7A47C80052392B /* UIColorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
